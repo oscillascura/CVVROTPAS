@@ -184,74 +184,345 @@ function appendOutput(text, className = "") {
 
 function openArchive() {
   archiveContent.innerHTML = `
-    <div class="archive-screen">
-      <section class="archive-banner">
-        <div class="archive-banner__bar">
-          ▓████████████████████████████████████████████████████████████▓
-        </div>
-        <div class="archive-banner__inner">
-          <h1>COSMIC VVAMPIRIC RITES OF THE POST-HUMANIAN ASCENT SEQUENCE</h1>
-          <div class="archive-meta">
-            POST-HUMANIAN ASCENT ARCHIVE<br>
-            RITUAL ENGINE // SYSTEM LOG<br>
-            STATUS: SEQUENCE ACTIVE
-          </div>
-        </div>
-        <div class="archive-banner__bar">
-          ▓████████████████████████████████████████████████████████████▓
-        </div>
-      </section>
-
-      <div class="archive-divider">
-        ░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░
+    <section class="archive-terminal">
+      <div class="archive-terminal__header">
+        <strong>ARCHIVE NODE:</strong> CVVROTPAS<br>
+        <strong>RENDER MODE:</strong> RAW TERMINAL TEXT<br>
+        <strong>STATUS:</strong> SEQUENCE ACTIVE
       </div>
+      <pre class="archive-ascii">▓████████████████████████████████████████████████████████████████▓
+█                                                                █
+█       COSMIC VVAMPIRIC RITES OF THE POST-HUMANIAN              █
+█                    ASCENT SEQUENCE                             █
+█                                                                █
+▓████████████████████████████████████████████████████████████████▓
 
-      <div class="archive-grid">
-        ${chapters.map((chapter) => `
-          <section class="code-chapter">
-            <header class="code-chapter__title">
-              <h2>${chapter.title}</h2>
-              <span class="code-chapter__state">[ ${chapter.state} ]</span>
-            </header>
-            <div class="code-chapter__body">
-              <div class="code-chapter__record">
-                ┌─[ ${chapter.record} ]<br>
-                │
-              </div>
-              <p class="code-chapter__story">${chapter.text}</p>
-              <div class="code-chapter__status">
-                └─[ PROCESS DATA ]<br><br>${chapter.status}
-                <span class="block-meter">${chapter.meter}</span>
-              </div>
-            </div>
-          </section>
-        `).join("")}
-      </div>
+          ╔══════════════════════════════════════════╗
+          ║  POST-HUMANIAN ASCENT ARCHIVE           ║
+          ║  RITUAL ENGINE // SYSTEM LOG             ║
+          ║  ORIGIN: [REDACTED]                      ║
+          ║  STATUS: SEQUENCE ACTIVE                 ║
+          ╚══════════════════════════════════════════╝
 
-      <section class="archive-footer">
-        <div class="archive-footer__bar">
-          POST-HUMANIAN ASCENT SEQUENCE // SYSTEM LOG
-        </div>
-        <div class="archive-footer__content">
-&gt; INITIATION.................................COMPLETE
-&gt; SLUMBER....................................COMPLETE
-&gt; EXISTENCE..................................COMPLETE
-&gt; ERROR......................................DETECTED
-&gt; REDIRECT...................................COMPLETE
-&gt; OVERRIDE...................................COMPLETE
-&gt; CALCULATION................................COMPLETE
-&gt; ARRIVAL....................................CONFIRMED
+                    ░▒▓ INITIATION ▓▒░
 
-          <div class="archive-final-command">
-            FEED // SLEEP // CONSUME // ASCEND
-          </div>
-        </div>
-      </section>
-    </div>
+
+╔════════════════════════════════════════════════════════════════╗
+║ I. KILL CODE [INITIATION]                                      ║
+╚════════════════════════════════════════════════════════════════╝
+
+┌─[ EXECUTION RECORD 01 ]
+│
+│  The Ascension Sequence begins with the execution of the
+│  Kill Code, a forbidden algorithm that severs humanity from
+│  its biological inheritance.
+│
+│  Death becomes obsolete as the code rewrites flesh into an
+│  instrument of perpetual consumption.
+│
+│  Compassion, mortality, and identity are recursively deleted,
+│  leaving behind only the first Energy Vampire.
+│
+│  Humanity unknowingly authors its own replacement.
+│
+└─[ PROCESS COMPLETE ]
+
+    HUMANITY.................TERMINATED
+    MORTALITY................DISABLED
+    ASCENSION................INITIATED
+
+    ████████████████████████████████████████████ 100%
+
+
+                    ░▒▓ SLUMBER ▓▒░
+
+
+╔════════════════════════════════════════════════════════════════╗
+║ II. POST-HUMANIAN [SLUMBER]                                   ║
+╚════════════════════════════════════════════════════════════════╝
+
+┌─[ CRYOGENIC RECORD 02 ]
+│
+│  The newly ascended abandon their dying world and entomb
+│  themselves within a colossal fortress drifting through
+│  interstellar darkness.
+│
+│  Beneath vaulted halls of black architecture, countless
+│  cryogenic chambers preserve their immortal forms while
+│  centuries dissolve into silence.
+│
+│  Sleep is no longer rest.
+│
+│  It is optimization.
+│
+│  Time itself becomes another expendable resource.
+│
+└─[ SUSPENSION CONFIRMED ]
+
+    BIOLOGICAL TIME...........SUSPENDED
+    CASTLE VESSEL.............IN TRANSIT
+    DREAM STATE...............ENCRYPTED
+
+    ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░░░░░░░░░░░░░░░░░░░
+
+
+                    ░▒▓ EXISTENCE ▓▒░
+
+
+╔════════════════════════════════════════════════════════════════╗
+║ III. ENDLESS THIRST [EXISTENCE]                                ║
+╚════════════════════════════════════════════════════════════════╝
+
+┌─[ SUSTENANCE RECORD 03 ]
+│
+│  Immortality reveals its hidden cost.
+│
+│  The hunger cannot be satisfied, only postponed.
+│
+│  Every cycle of awakening demands greater reservoirs of
+│  stolen life until existence itself becomes synonymous
+│  with consumption.
+│
+│  The vampires no longer seek purpose, redemption, or conquest.
+│
+│  Their civilization survives only to feed.
+│
+└─[ HUNGER CONDITION PERMANENT ]
+
+    PURPOSE...................NULL
+    REDEMPTION................NULL
+    CONSUMPTION...............ABSOLUTE
+
+    THIRST LEVEL:
+    ████████████████████████████████████████ ∞
+
+
+                      ░▒▓ ERROR ▓▒░
+
+
+╔════════════════════════════════════════════════════════════════╗
+║ IV. CORE SANCTUARY [ERROR]                                     ║
+╚════════════════════════════════════════════════════════════════╝
+
+┌─[ SANCTUARY RECORD 04 ]
+│
+│  Deep within the fortress lies the Core Sanctuary, the living
+│  heart that sustains every chamber, reactor, and immortal
+│  consciousness aboard the castle.
+│
+│  For millennia it functions without deviation until an
+│  impossible fault propagates through the system.
+│
+│  Energy reserves collapse beyond recovery.
+│
+│  Ancient warning protocols awaken the sleepers.
+│
+│  For the first time since Ascension, the sanctuary reports
+│  an error.
+│
+└─[ CRITICAL FAILURE DETECTED ]
+
+    CORE SANCTUARY............UNSTABLE
+    ENERGY RESERVES...........CRITICAL
+    IMMORTAL CHAMBERS.........AWAKENING
+
+    ▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+
+    ! ERROR
+    ! ERROR
+    ! ERROR
+
+
+                    ░▒▓ REDIRECT ▓▒░
+
+
+╔════════════════════════════════════════════════════════════════╗
+║ V. SOLAR EXTRACTION [REDIRECT]                                 ║
+╚════════════════════════════════════════════════════════════════╝
+
+┌─[ EXTRACTION RECORD 05 ]
+│
+│  Emergency protocols seize control of the vessel.
+│
+│  Navigation is redirected toward the nearest viable star.
+│
+│  Planetary-scale harvesting engines descend into the stellar
+│  atmosphere while immense conduits siphon rivers of plasma
+│  into impossible reservoirs beneath the fortress.
+│
+│  Entire suns are reduced to fuel, buying the vampires another
+│  age of existence before the hunger inevitably returns.
+│
+└─[ STELLAR CONSUMPTION ACTIVE ]
+
+    NAVIGATION................REDIRECTED
+    STELLAR TARGET............LOCKED
+    EXTRACTION TOWERS.........DEPLOYED
+    SOLAR MASS................CONSUMING
+
+              \        |        /
+               \       |       /
+            ----\---[ ☼ ]---/----
+                 \     |     /
+                  \    |    /
+
+    RESERVOIR CAPACITY:
+    ███████████████████████████████░░░░░░░░░ 76%
+
+
+                    ░▒▓ OVERRIDE ▓▒░
+
+
+╔════════════════════════════════════════════════════════════════╗
+║ VI. BELIEF COMMAND [OVERRIDE]                                  ║
+╚════════════════════════════════════════════════════════════════╝
+
+┌─[ DOCTRINE RECORD 06 ]
+│
+│  The restoration of power is accompanied by revelation.
+│
+│  The final remnants of human memory are identified as
+│  corrupted processes and permanently erased.
+│
+│  Faith, morality, guilt, and hope are overwritten by a single
+│  governing command.
+│
+│  Survival becomes doctrine.
+│
+│  Consumption becomes ritual.
+│
+│  Individual will becomes absolute law.
+│
+│  The last belief humanity ever possessed is overridden.
+│
+└─[ BELIEF ARCHITECTURE REPLACED ]
+
+    FAITH.....................ERASED
+    MORALITY..................ERASED
+    GUILT.....................ERASED
+    HOPE......................ERASED
+
+    NEW GOVERNING COMMAND:
+
+    ╔══════════════════════════════════════════╗
+    ║                                          ║
+    ║     SURVIVE // CONSUME // ASCEND         ║
+    ║                                          ║
+    ╚══════════════════════════════════════════╝
+
+
+                  ░▒▓ CALCULATION ▓▒░
+
+
+╔════════════════════════════════════════════════════════════════╗
+║ VII. DRIFT BEYOND [CALCULATION]                                ║
+╚════════════════════════════════════════════════════════════════╝
+
+┌─[ NAVIGATION RECORD 07 ]
+│
+│  With systems restored, the castle resumes its endless voyage
+│  beyond the mapped universe.
+│
+│  Ancient processors calculate impossible trajectories through
+│  dead galaxies and forgotten clusters, searching for
+│  concentrations of biological energy.
+│
+│  Millions of years pass as mere variables inside an endless
+│  equation.
+│
+│  Probability narrows toward inevitability.
+│
+│  Somewhere beyond calculation, life still exists.
+│
+└─[ SEARCH CONTINUES ]
+
+    GALACTIC MAP..............INCOMPLETE
+    ELAPSED TIME..............INCALCULABLE
+    BIOLOGICAL SIGNAL.........UNCONFIRMED
+    PROBABILITY...............INCREASING
+
+    00000001 00000010 00000100 00001000
+    00010000 00100000 01000000 10000000
+
+                .        *             .
+          *          .          .             *
+                   [ CASTLE VESSEL ]
+         .               ▲               .
+                         │
+                         │
+                  BEYOND CALCULATION
+
+
+                     ░▒▓ ARRIVAL ▓▒░
+
+
+╔════════════════════════════════════════════════════════════════╗
+║ VIII. OBSIDIAN THRONE [ARRIVAL]                                ║
+╚════════════════════════════════════════════════════════════════╝
+
+┌─[ ARRIVAL RECORD 08 ]
+│
+│  The calculations resolve.
+│
+│  A living world is found.
+│
+│  The fortress descends in silence, eclipsing its sun like a
+│  cathedral carved from night.
+│
+│  From the highest chamber, the Eternal Sovereign ascends the
+│  Obsidian Throne to witness the beginning of another harvest.
+│
+│  Entire civilizations are reduced to fuel while the castle&#x27;s
+│  chambers fill once again with stolen life.
+│
+│  The Ascension Sequence is complete.
+│
+│  The throne does not rule an empire.
+│
+│  It rules eternity.
+│
+└─[ ARRIVAL CONFIRMED ]
+
+                         ╱╲
+                        ╱  ╲
+                       ╱▓▓▓▓╲
+                      ╱▓▓▓▓▓▓╲
+                     ╱▓▓▓▓▓▓▓▓╲
+                    ╱▓▓▓▓▓▓▓▓▓▓╲
+                   ╱______†_______╲
+                         ║
+                    [ OBSIDIAN ]
+                      [ THRONE ]
+
+    WORLD STATUS..............INHABITED
+    HARVEST STATUS............AUTHORIZED
+    ASCENSION SEQUENCE........COMPLETE
+
+
+▓████████████████████████████████████████████████████████████████▓
+█                                                                █
+█          POST-HUMANIAN ASCENT SEQUENCE // SYSTEM LOG           █
+█                                                                █
+█   &gt; INITIATION.................................COMPLETE        █
+█   &gt; SLUMBER....................................COMPLETE        █
+█   &gt; EXISTENCE..................................COMPLETE        █
+█   &gt; ERROR......................................DETECTED        █
+█   &gt; REDIRECT...................................COMPLETE        █
+█   &gt; OVERRIDE...................................COMPLETE        █
+█   &gt; CALCULATION................................COMPLETE        █
+█   &gt; ARRIVAL....................................CONFIRMED       █
+█                                                                █
+█   FINAL COMMAND:                                               █
+█                                                                █
+█              FEED // SLEEP // CONSUME // ASCEND                █
+█                                                                █
+▓████████████████████████████████████████████████████████████████▓</pre>
+    </section>
   `;
 
   dialog.showModal();
 }
+
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();

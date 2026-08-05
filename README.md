@@ -67,3 +67,7 @@ Then visit `http://localhost:8000`.
 ## Code-layout archive update
 
 This version replaces the parchment manuscript display with a terminal-style two-column system dossier.
+
+## Pure terminal archive version
+
+This build displays the full album archive as raw monospace terminal text using the original block shading, ASCII borders, status lines, and diagrams. The illuminated-manuscript layout is no longer used in the live archive view.
