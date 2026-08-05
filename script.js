@@ -1,3 +1,9 @@
+const externalLinks = {
+  bandcamp: "https://YOUR-BANDCAMP-URL-HERE",
+  spotify: "https://YOUR-SPOTIFY-URL-HERE",
+  instagram: "https://YOUR-INSTAGRAM-URL-HERE"
+};
+
 const bootText = document.querySelector("#bootText");
 const output = document.querySelector("#output");
 const form = document.querySelector("#commandForm");
@@ -80,7 +86,10 @@ const commands = {
     "help           display command list",
     "archive        open the eight-part ascent sequence",
     "rituals        display album sequence",
-    "music          open Oscillascura music link",
+    "bandcamp       open Oscillascura on Bandcamp",
+    "spotify        open Oscillascura on Spotify",
+    "instagram      open Oscillascura on Instagram",
+    "music          display external music commands",
     "transmissions  display recovered transmissions",
     "manuscript     open the illuminated archive",
     "clear          purge terminal output",
@@ -113,10 +122,28 @@ const commands = {
     return "ILLUMINATED MANUSCRIPT RESTORED.";
   },
 
-  music: () => {
-    // Replace this URL with the exact Oscillascura Bandcamp address.
-    window.open("https://bandcamp.com", "_blank", "noopener,noreferrer");
-    return "EXTERNAL AUDIO NODE OPENED. UPDATE THE BANDCAMP URL IN script.js.";
+  music: () => [
+    "EXTERNAL AUDIO / SOCIAL NODES",
+    "",
+    "bandcamp",
+    "spotify",
+    "instagram"
+  ].join("
+"),
+
+  bandcamp: () => {
+    openExternalNode("bandcamp");
+    return "OPENING BANDCAMP NODE...";
+  },
+
+  spotify: () => {
+    openExternalNode("spotify");
+    return "OPENING SPOTIFY NODE...";
+  },
+
+  instagram: () => {
+    openExternalNode("instagram");
+    return "OPENING INSTAGRAM NODE...";
   },
 
   clear: () => {
@@ -148,6 +175,21 @@ const commands = {
     "THE CASTLE IS LISTENING."
   ].join("\n")
 };
+
+
+function openExternalNode(name) {
+  const url = externalLinks[name];
+
+  if (!url || url.includes("YOUR-")) {
+    appendOutput(
+      `LINK NOT CONFIGURED: ${name.toUpperCase()}\nEDIT externalLinks IN script.js.`,
+      "error-text"
+    );
+    return;
+  }
+
+  window.open(url, "_blank", "noopener,noreferrer");
+}
 
 function typeBootSequence() {
   const lines = [

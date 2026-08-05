@@ -71,3 +71,24 @@ This version replaces the parchment manuscript display with a terminal-style two
 ## Pure terminal archive version
 
 This build displays the full album archive as raw monospace terminal text using the original block shading, ASCII borders, status lines, and diagrams. The illuminated-manuscript layout is no longer used in the live archive view.
+
+## White terminal and external-link commands
+
+The site now uses a white-on-black phosphor terminal palette.
+
+Edit these three lines near the top of `script.js`:
+
+```js
+const externalLinks = {
+  bandcamp: "https://YOUR-BANDCAMP-URL-HERE",
+  spotify: "https://YOUR-SPOTIFY-URL-HERE",
+  instagram: "https://YOUR-INSTAGRAM-URL-HERE"
+};
+```
+
+Available commands:
+
+- `bandcamp`
+- `spotify`
+- `instagram`
+- `music`
