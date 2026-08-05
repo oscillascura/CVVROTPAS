@@ -1,7 +1,7 @@
 const externalLinks = {
-  bandcamp: "https://YOUR-BANDCAMP-URL-HERE",
-  spotify: "https://YOUR-SPOTIFY-URL-HERE",
-  instagram: "https://YOUR-INSTAGRAM-URL-HERE"
+  bandcamp: "https://https://oscillascura.bandcamp.com/",
+  spotify: "https://https://open.spotify.com/artist/2sSWAtH9GgVl0kMP33tcRE?si=z3nbl9O8TYGcG50xZCcN4w",
+  instagram: "https://https://www.instagram.com/oscillascura/"
 };
 
 const bootText = document.querySelector("#bootText");
