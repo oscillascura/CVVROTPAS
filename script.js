@@ -128,8 +128,7 @@ const commands = {
     "bandcamp",
     "spotify",
     "instagram"
-  ].join("
-"),
+  ].join("\n"),
 
   bandcamp: () => {
     openExternalNode("bandcamp");
