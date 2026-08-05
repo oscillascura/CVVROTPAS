@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Oscillascura Post-Humanian Ascent Archive">
+  <title>Oscillascura // Ascent Archive</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <main class="terminal-shell">
+    <header class="system-header">
+      <div>
+        <p class="eyebrow">OSCILLASCURA NODE // ARCHIVE 08</p>
+        <h1>POST-HUMANIAN ASCENT ARCHIVE</h1>
+      </div>
+      <div class="system-status">
+        <span class="status-light" aria-hidden="true"></span>
+        ONLINE
+      </div>
+    </header>
+
+    <section class="boot-panel" aria-label="System status">
+      <pre id="bootText" class="boot-text"></pre>
+    </section>
+
+    <section class="terminal" aria-label="Interactive command terminal">
+      <div id="output" class="output" aria-live="polite"></div>
+
+      <form id="commandForm" class="command-line" autocomplete="off">
+        <label for="commandInput" class="prompt">&gt;</label>
+        <input
+          id="commandInput"
+          name="command"
+          type="text"
+          spellcheck="false"
+          aria-label="Enter archive command"
+          autofocus
+        >
+        <span class="cursor" aria-hidden="true"></span>
+      </form>
+    </section>
+
+    <noscript>
+      <p class="noscript">JavaScript is required to access the archive terminal.</p>
+    </noscript>
+  </main>
+
+  <dialog id="archiveDialog" class="archive-dialog">
+    <button id="closeDialog" class="close-button" type="button">[ CLOSE ARCHIVE ]</button>
+    <article id="archiveContent"></article>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>

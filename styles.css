@@ -1,0 +1,298 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=UnifrakturMaguntia&display=swap');
+
+:root {
+  --background: #050505;
+  --panel: rgba(10, 10, 10, 0.92);
+  --text: #d8ffcf;
+  --muted: #7ca976;
+  --accent: #b6ff9f;
+  --danger: #ff554f;
+  --line: rgba(182, 255, 159, 0.25);
+  --shadow: rgba(182, 255, 159, 0.18);
+  --max-width: 1120px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: clamp(16px, 4vw, 48px);
+  overflow-x: hidden;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top, rgba(42, 75, 38, 0.18), transparent 42%),
+    var(--background);
+  font-family: "IBM Plex Mono", monospace;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.scanlines {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  pointer-events: none;
+  opacity: 0.12;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 3px,
+    rgba(255, 255, 255, 0.08) 4px
+  );
+}
+
+.terminal-shell {
+  width: min(100%, var(--max-width));
+  min-height: calc(100vh - 96px);
+  margin: 0 auto;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  box-shadow:
+    0 0 40px rgba(0, 0, 0, 0.8),
+    0 0 24px var(--shadow);
+}
+
+.system-header {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: clamp(18px, 4vw, 34px);
+  border-bottom: 1px solid var(--line);
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: var(--muted);
+  font-size: 0.74rem;
+  letter-spacing: 0.15em;
+}
+
+h1 {
+  max-width: 760px;
+  margin: 0;
+  color: var(--accent);
+  font-size: clamp(1.4rem, 4vw, 3.35rem);
+  line-height: 1;
+  text-shadow: 0 0 18px var(--shadow);
+}
+
+.system-status {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 9px;
+  align-items: center;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.status-light {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 12px var(--accent);
+}
+
+.boot-panel {
+  padding: 18px clamp(18px, 4vw, 34px);
+  border-bottom: 1px solid var(--line);
+}
+
+.boot-text {
+  min-height: 7.5em;
+  margin: 0;
+  overflow: hidden;
+  white-space: pre-wrap;
+  color: var(--muted);
+  font-size: clamp(0.72rem, 2vw, 0.92rem);
+  line-height: 1.65;
+}
+
+.terminal {
+  min-height: 500px;
+  padding: clamp(18px, 4vw, 34px);
+}
+
+.output {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  line-height: 1.65;
+}
+
+.output-block {
+  margin: 0 0 22px;
+}
+
+.command-echo {
+  color: var(--accent);
+}
+
+.error-text {
+  color: var(--danger);
+}
+
+.command-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.prompt {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+#commandInput {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  color: var(--accent);
+  caret-color: transparent;
+  background: transparent;
+}
+
+.cursor {
+  width: 0.65em;
+  height: 1.2em;
+  margin-left: -8px;
+  background: var(--accent);
+  animation: blink 0.9s steps(1) infinite;
+}
+
+.archive-dialog {
+  width: min(94vw, 1000px);
+  max-height: 90vh;
+  padding: 0;
+  overflow: auto;
+  border: 1px solid var(--line);
+  color: var(--text);
+  background: #080808;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.95);
+}
+
+.archive-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(4px);
+}
+
+.close-button {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  width: 100%;
+  padding: 14px;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--accent);
+  background: #0b0b0b;
+  cursor: pointer;
+}
+
+.manuscript {
+  padding: clamp(20px, 5vw, 60px);
+  background:
+    linear-gradient(rgba(5, 5, 5, 0.72), rgba(5, 5, 5, 0.9)),
+    url("assets/illuminated-manuscript.png") center top / cover fixed;
+}
+
+.manuscript-title {
+  margin: 0 0 42px;
+  font-family: "UnifrakturMaguntia", serif;
+  font-size: clamp(2rem, 7vw, 5rem);
+  line-height: 0.95;
+  text-align: center;
+  color: #d5c395;
+  text-shadow: 0 3px 14px #000;
+}
+
+.chapter {
+  max-width: 760px;
+  margin: 0 auto 34px;
+  padding: clamp(18px, 4vw, 34px);
+  border: 1px solid rgba(213, 195, 149, 0.4);
+  background: rgba(4, 4, 4, 0.84);
+  box-shadow: inset 0 0 30px rgba(213, 195, 149, 0.05);
+}
+
+.chapter h2 {
+  margin: 0 0 18px;
+  color: #d5c395;
+  font-size: clamp(1rem, 3vw, 1.45rem);
+  text-transform: uppercase;
+}
+
+.chapter p {
+  margin: 0;
+  line-height: 1.8;
+}
+
+.override-mode {
+  --text: #ffd2d0;
+  --muted: #b56a66;
+  --accent: #ff554f;
+  --line: rgba(255, 85, 79, 0.34);
+  --shadow: rgba(255, 85, 79, 0.26);
+}
+
+.override-mode .terminal-shell {
+  animation: glitch 0.12s steps(2) 5;
+}
+
+.noscript {
+  padding: 24px;
+  color: var(--danger);
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+@keyframes glitch {
+  0% { transform: translate(0); }
+  25% { transform: translate(2px, -1px); }
+  50% { transform: translate(-2px, 1px); }
+  75% { transform: translate(1px, 2px); }
+  100% { transform: translate(0); }
+}
+
+@media (max-width: 680px) {
+  body {
+    padding: 0;
+  }
+
+  .terminal-shell {
+    min-height: 100vh;
+    border-right: 0;
+    border-left: 0;
+  }
+
+  .system-header {
+    flex-direction: column;
+  }
+
+  .cursor {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
