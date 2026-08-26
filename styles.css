@@ -651,3 +651,40 @@ h1,
     #010101;
   background-size: 20px 20px;
 }
+
+
+/* OSCILLASCURA LOGO + ARCHIVE TITLE LOCKUP */
+.header-identity {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.title-lockup {
+  display: flex;
+  align-items: center;
+  gap: clamp(18px, 2.8vw, 34px);
+}
+
+.header-logo {
+  display: block;
+  width: auto;
+  height: clamp(68px, 7.5vw, 100px);
+  max-width: 27%;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+
+.title-lockup h1 {
+  flex: 1 1 auto;
+}
+
+@media (max-width: 680px) {
+  .title-lockup {
+    gap: 14px;
+  }
+
+  .header-logo {
+    height: clamp(50px, 14vw, 70px);
+    max-width: 30%;
+  }
+}
