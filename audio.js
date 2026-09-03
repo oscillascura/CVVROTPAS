@@ -82,6 +82,26 @@ const rehearsalArchive = {
 };
 
 
+/* ==============================================================
+   REHEARSAL ARCHIVE FRAGMENTS
+============================================================== */
+
+const rehearsalPackages = {
+  "a": {
+    label: "A // TRANSMISSIONS 01–02",
+    file: "transmissions/Oscillascura-Rehearsal-Archive-A.zip"
+  },
+  "b": {
+    label: "B // TRANSMISSIONS 03–04",
+    file: "transmissions/Oscillascura-Rehearsal-Archive-B.zip"
+  },
+  "c": {
+    label: "C // TRANSMISSIONS 05–06",
+    file: "transmissions/Oscillascura-Rehearsal-Archive-C.zip"
+  }
+};
+
+
 const AUDIO_ACCESS_KEY = "cvvrotpas_audio_access_level_ii";
 
 let activeAudio = null;
@@ -193,6 +213,7 @@ function buildRehearsalArchiveListing() {
     "EXECUTE:",
     "rehearsal play 01",
     "rehearsal download 01",
+    "rehearsal download all",
     "",
     "WARNING:",
     "THESE TRANSMISSIONS EXIST OUTSIDE",
@@ -507,6 +528,127 @@ function downloadRehearsalTrack(id) {
 }
 
 
+/* ==============================================================
+   REHEARSAL ARCHIVE FRAGMENT MENU
+============================================================== */
+
+function listRehearsalPackages() {
+  if (!audioAccessUnlocked()) {
+    appendOutput(
+      [
+        "ACCESS DENIED.",
+        "",
+        "UNINDEXED ARCHIVE REQUIRES ACCESS LEVEL II."
+      ].join("\n"),
+      "error-text"
+    );
+
+    return;
+  }
+
+  appendOutput(
+    [
+      "ARCHIVE SIZE EXCEEDS SINGLE-NODE CAPACITY.",
+      "",
+      "FRAGMENTING DATA...",
+      "",
+      "▓░▓░▓▓▓░▓░▓▓░▓░▓░▓▓▓░▓"
+    ].join("\n")
+  );
+
+  window.setTimeout(() => {
+    appendOutput(
+      [
+        "████████████████████████████████████████ 100%",
+        "",
+        "ARCHIVE FRAGMENTS:",
+        "",
+        "A // TRANSMISSIONS 01–02",
+        "B // TRANSMISSIONS 03–04",
+        "C // TRANSMISSIONS 05–06",
+        "",
+        "EXECUTE:",
+        "rehearsal download a",
+        "rehearsal download b",
+        "rehearsal download c"
+      ].join("\n")
+    );
+  }, 800);
+}
+
+
+/* ==============================================================
+   DOWNLOAD REHEARSAL ARCHIVE FRAGMENT
+============================================================== */
+
+function downloadRehearsalPackage(fragmentId) {
+  const fragment = rehearsalPackages[fragmentId];
+
+  if (!audioAccessUnlocked()) {
+    appendOutput(
+      [
+        "ACCESS DENIED.",
+        "",
+        "UNINDEXED ARCHIVE REQUIRES ACCESS LEVEL II."
+      ].join("\n"),
+      "error-text"
+    );
+
+    return;
+  }
+
+  if (!fragment) {
+    appendOutput(
+      `ARCHIVE FRAGMENT NOT FOUND: ${fragmentId.toUpperCase()}`,
+      "error-text"
+    );
+
+    return;
+  }
+
+  appendOutput(
+    [
+      `ACCESSING ARCHIVE FRAGMENT ${fragmentId.toUpperCase()}...`,
+      "",
+      fragment.label,
+      "",
+      "▓░▓░▓▓▓░▓░▓▓░▓░▓░▓▓▓░▓"
+    ].join("\n")
+  );
+
+  window.setTimeout(() => {
+    appendOutput(
+      [
+        "VERIFYING ARCHIVE...",
+        "",
+        "████████████████████████████████████████ 100%"
+      ].join("\n")
+    );
+  }, 650);
+
+  window.setTimeout(() => {
+    appendOutput(
+      [
+        "ARCHIVE FRAGMENT RECOVERED.",
+        "",
+        "INITIATING DOWNLOAD...",
+        "",
+        fragment.label
+      ].join("\n")
+    );
+
+    const link = document.createElement("a");
+
+    link.href = fragment.file;
+    link.download = fragment.file.split("/").pop();
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }, 1300);
+}
+
+
 /* --------------------------------------------------------------
    ACCESS LEVEL II
    Typing "override" unlocks the audio archive and changes help.
@@ -632,6 +774,10 @@ commands.rehearsal = () => {
    play 01
    rehearsal play 01
    rehearsal download 01
+   rehearsal download all
+   rehearsal download a
+   rehearsal download b
+   rehearsal download c
 -------------------------------------------------------------- */
 
 form.addEventListener(
@@ -639,6 +785,45 @@ form.addEventListener(
   (event) => {
     const rawCommand = input.value.trim();
     const normalizedCommand = rawCommand.toLowerCase();
+
+
+    /* ----------------------------------------------------------
+       REHEARSAL DOWNLOAD ALL
+    ---------------------------------------------------------- */
+
+    if (normalizedCommand === "rehearsal download all") {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+
+      input.value = "";
+      appendOutput(`> ${rawCommand}`, "command-echo");
+
+      listRehearsalPackages();
+
+      return;
+    }
+
+
+    /* ----------------------------------------------------------
+       REHEARSAL ARCHIVE FRAGMENT DOWNLOAD
+    ---------------------------------------------------------- */
+
+    const rehearsalPackageMatch =
+      normalizedCommand.match(/^rehearsal\s+download\s+([abc])$/);
+
+    if (rehearsalPackageMatch) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+
+      input.value = "";
+      appendOutput(`> ${rawCommand}`, "command-echo");
+
+      const fragmentId = rehearsalPackageMatch[1];
+
+      downloadRehearsalPackage(fragmentId);
+
+      return;
+    }
 
 
     /* ----------------------------------------------------------
