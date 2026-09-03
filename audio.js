@@ -3,9 +3,16 @@
   --------------------------------------
   Put preview MP3s inside /audio using the filenames below.
 
+  Unindexed rehearsal transmissions live inside /transmissions.
+
   This file is intentionally separate from script.js so your existing
   social URLs and other terminal customizations remain untouched.
 */
+
+
+/* ==============================================================
+   RESTRICTED ALBUM AUDIO ARCHIVE
+============================================================== */
 
 const audioArchive = {
   "01": {
@@ -42,10 +49,48 @@ const audioArchive = {
   }
 };
 
+
+/* ==============================================================
+   UNINDEXED REHEARSAL TRANSMISSIONS
+============================================================== */
+
+const rehearsalArchive = {
+  "01": {
+    title: "ENHANCED CAPABILITIES ::{LIVE REHEARSAL}",
+    file: "transmissions/rehearsal-01-enhanced-capabilities.mp3"
+  },
+  "02": {
+    title: "IMMORTAL FRAME ::{LIVE REHEARSAL}",
+    file: "transmissions/rehearsal-02-immortal-frame.mp3"
+  },
+  "03": {
+    title: "POST-HUMANIAN [SLUMBER] ::{LIVE REHEARSAL}",
+    file: "transmissions/rehearsal-03-post-humanian-slumber.mp3"
+  },
+  "04": {
+    title: "DRIFT BEYOND [CALCULATION] ::{LIVE REHEARSAL}",
+    file: "transmissions/rehearsal-04-drift-beyond-calculation.mp3"
+  },
+  "05": {
+    title: "OBSIDIAN THRONE [ARRIVAL] ::{LIVE REHEARSAL}",
+    file: "transmissions/rehearsal-05-obsidian-throne-arrival.mp3"
+  },
+  "06": {
+    title: "COGNITIVE TRANSFERENCE ::{LIVE REHEARSAL}",
+    file: "transmissions/rehearsal-06-cognitive-transference.mp3"
+  }
+};
+
+
 const AUDIO_ACCESS_KEY = "cvvrotpas_audio_access_level_ii";
 
 let activeAudio = null;
 let activeTrackId = null;
+
+
+/* ==============================================================
+   ACCESS STATE
+============================================================== */
 
 function audioAccessUnlocked() {
   return localStorage.getItem(AUDIO_ACCESS_KEY) === "true";
@@ -55,6 +100,11 @@ function unlockAudioArchive() {
   localStorage.setItem(AUDIO_ACCESS_KEY, "true");
 }
 
+
+/* ==============================================================
+   AUDIO CONTROLS
+============================================================== */
+
 function stopArchiveAudio() {
   if (!activeAudio) return false;
 
@@ -62,11 +112,13 @@ function stopArchiveAudio() {
   activeAudio.currentTime = 0;
   activeAudio = null;
   activeTrackId = null;
+
   return true;
 }
 
 function pauseArchiveAudio() {
   if (!activeAudio || activeAudio.paused) return false;
+
   activeAudio.pause();
   return true;
 }
@@ -83,6 +135,11 @@ function resumeArchiveAudio() {
 
   return true;
 }
+
+
+/* ==============================================================
+   ALBUM ARCHIVE LISTING
+============================================================== */
 
 function buildAudioArchiveListing() {
   return [
@@ -109,6 +166,45 @@ function buildAudioArchiveListing() {
   ].join("\n");
 }
 
+
+/* ==============================================================
+   REHEARSAL ARCHIVE LISTING
+============================================================== */
+
+function buildRehearsalArchiveListing() {
+  return [
+    "UNINDEXED REHEARSAL ARCHIVE DETECTED",
+    "",
+    "████████████████████████████████████████",
+    "",
+    "SOURCE.....................OSCILLASCURA",
+    "CAPTURE TYPE................LIVE REHEARSAL",
+    "ARCHIVE STATUS..............UNRELEASED",
+    "PUBLIC INDEX................NULL",
+    "SECURITY CLASS..............UNINDEXED",
+    "",
+    "01  ENHANCED CAPABILITIES ::{LIVE REHEARSAL}",
+    "02  IMMORTAL FRAME ::{LIVE REHEARSAL}",
+    "03  POST-HUMANIAN [SLUMBER] ::{LIVE REHEARSAL}",
+    "04  DRIFT BEYOND [CALCULATION] ::{LIVE REHEARSAL}",
+    "05  OBSIDIAN THRONE [ARRIVAL] ::{LIVE REHEARSAL}",
+    "06  COGNITIVE TRANSFERENCE ::{LIVE REHEARSAL}",
+    "",
+    "EXECUTE:",
+    "rehearsal play 01",
+    "rehearsal download 01",
+    "",
+    "WARNING:",
+    "THESE TRANSMISSIONS EXIST OUTSIDE",
+    "THE AUTHORIZED DISCOGRAPHIC SEQUENCE."
+  ].join("\n");
+}
+
+
+/* ==============================================================
+   PLAY ALBUM TRACK
+============================================================== */
+
 function playArchiveTrack(id) {
   const track = audioArchive[id];
 
@@ -121,6 +217,7 @@ function playArchiveTrack(id) {
       ].join("\n"),
       "error-text"
     );
+
     return;
   }
 
@@ -129,6 +226,7 @@ function playArchiveTrack(id) {
       `AUDIO RECORD NOT FOUND: ${id}`,
       "error-text"
     );
+
     return;
   }
 
@@ -220,6 +318,195 @@ function playArchiveTrack(id) {
 }
 
 
+/* ==============================================================
+   PLAY REHEARSAL TRANSMISSION
+============================================================== */
+
+function playRehearsalTrack(id) {
+  const track = rehearsalArchive[id];
+
+  if (!audioAccessUnlocked()) {
+    appendOutput(
+      [
+        "ACCESS DENIED.",
+        "",
+        "UNINDEXED ARCHIVE REQUIRES ACCESS LEVEL II."
+      ].join("\n"),
+      "error-text"
+    );
+
+    return;
+  }
+
+  if (!track) {
+    appendOutput(
+      `REHEARSAL TRANSMISSION NOT FOUND: ${id}`,
+      "error-text"
+    );
+
+    return;
+  }
+
+  stopArchiveAudio();
+
+  appendOutput(
+    [
+      "ACCESSING UNINDEXED TRANSMISSION...",
+      "",
+      "▓░▓░▓▓▓░▓░▓▓░▓░▓░▓▓▓░▓",
+      "",
+      `TRANSMISSION ${id} // ${track.title}`
+    ].join("\n")
+  );
+
+  window.setTimeout(() => {
+    appendOutput(
+      [
+        "VERIFYING SIGNAL...",
+        "",
+        "████████████████████████████████████████ 100%"
+      ].join("\n")
+    );
+  }, 650);
+
+  window.setTimeout(() => {
+    activeAudio = new Audio(track.file);
+    activeTrackId = `REHEARSAL ${id}`;
+    activeAudio.preload = "auto";
+
+    activeAudio.addEventListener("ended", () => {
+      appendOutput(
+        [
+          `REHEARSAL TRANSMISSION ${id} COMPLETE.`,
+          track.title,
+          "",
+          "UNINDEXED AUDIO NODE CLOSED."
+        ].join("\n")
+      );
+
+      activeAudio = null;
+      activeTrackId = null;
+    });
+
+    activeAudio.addEventListener("error", () => {
+      appendOutput(
+        [
+          "TRANSMISSION FILE NOT FOUND.",
+          "",
+          `EXPECTED FILE: ${track.file}`,
+          "",
+          "VERIFY THE MP3 EXISTS IN THE /transmissions FOLDER."
+        ].join("\n"),
+        "error-text"
+      );
+
+      activeAudio = null;
+      activeTrackId = null;
+    });
+
+    activeAudio.play()
+      .then(() => {
+        appendOutput(
+          [
+            "UNINDEXED TRANSMISSION RESTORED.",
+            "",
+            "████████████████████████████████████████",
+            "",
+            "TRANSMISSION ACTIVE",
+            "",
+            `${id} // ${track.title}`
+          ].join("\n")
+        );
+      })
+      .catch(() => {
+        appendOutput(
+          [
+            "AUDIO EXECUTION BLOCKED.",
+            "",
+            "CLICK INSIDE THE TERMINAL AND ENTER THE COMMAND AGAIN."
+          ].join("\n"),
+          "error-text"
+        );
+
+        activeAudio = null;
+        activeTrackId = null;
+      });
+  }, 1300);
+}
+
+
+/* ==============================================================
+   DOWNLOAD REHEARSAL TRANSMISSION
+============================================================== */
+
+function downloadRehearsalTrack(id) {
+  const track = rehearsalArchive[id];
+
+  if (!audioAccessUnlocked()) {
+    appendOutput(
+      [
+        "ACCESS DENIED.",
+        "",
+        "UNINDEXED ARCHIVE REQUIRES ACCESS LEVEL II."
+      ].join("\n"),
+      "error-text"
+    );
+
+    return;
+  }
+
+  if (!track) {
+    appendOutput(
+      `REHEARSAL TRANSMISSION NOT FOUND: ${id}`,
+      "error-text"
+    );
+
+    return;
+  }
+
+  appendOutput(
+    [
+      "DECRYPTING UNINDEXED FILE...",
+      "",
+      "▓░▓░▓▓▓░▓░▓▓░▓░▓░▓▓▓░▓",
+      "",
+      `TRANSMISSION ${id} // ${track.title}`
+    ].join("\n")
+  );
+
+  window.setTimeout(() => {
+    appendOutput(
+      [
+        "VERIFYING CHECKSUM...",
+        "",
+        "████████████████████████████████████████ 100%"
+      ].join("\n")
+    );
+  }, 650);
+
+  window.setTimeout(() => {
+    appendOutput(
+      [
+        "FILE RECOVERED.",
+        "",
+        "INITIATING DOWNLOAD...",
+        "",
+        track.title
+      ].join("\n")
+    );
+
+    const link = document.createElement("a");
+
+    link.href = track.file;
+    link.download = track.file.split("/").pop();
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }, 1300);
+}
+
+
 /* --------------------------------------------------------------
    ACCESS LEVEL II
    Typing "override" unlocks the audio archive and changes help.
@@ -268,6 +555,10 @@ commands.help = () => {
 };
 
 
+/* ==============================================================
+   VISIBLE ACCESS LEVEL II COMMANDS
+============================================================== */
+
 commands.audio = () => {
   if (!audioAccessUnlocked()) {
     return [
@@ -314,9 +605,33 @@ commands.stop = () => {
 };
 
 
+/* ==============================================================
+   HIDDEN COMMAND
+
+   Intentionally NOT included in help.
+============================================================== */
+
+commands.rehearsal = () => {
+  if (!audioAccessUnlocked()) {
+    return [
+      "ACCESS DENIED.",
+      "",
+      "UNINDEXED ARCHIVE REQUIRES ACCESS LEVEL II."
+    ].join("\n");
+  }
+
+  return buildRehearsalArchiveListing();
+};
+
+
 /* --------------------------------------------------------------
-   "play 01" uses an argument, so intercept it before the original
-   command handler treats it as an unknown exact command.
+   ARGUMENT COMMAND INTERCEPTOR
+
+   Supports:
+
+   play 01
+   rehearsal play 01
+   rehearsal download 01
 -------------------------------------------------------------- */
 
 form.addEventListener(
@@ -324,6 +639,56 @@ form.addEventListener(
   (event) => {
     const rawCommand = input.value.trim();
     const normalizedCommand = rawCommand.toLowerCase();
+
+
+    /* ----------------------------------------------------------
+       REHEARSAL PLAY
+    ---------------------------------------------------------- */
+
+    const rehearsalPlayMatch =
+      normalizedCommand.match(/^rehearsal\s+play\s+(\d{1,2})$/);
+
+    if (rehearsalPlayMatch) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+
+      input.value = "";
+      appendOutput(`> ${rawCommand}`, "command-echo");
+
+      const id = rehearsalPlayMatch[1].padStart(2, "0");
+
+      playRehearsalTrack(id);
+
+      return;
+    }
+
+
+    /* ----------------------------------------------------------
+       REHEARSAL DOWNLOAD
+    ---------------------------------------------------------- */
+
+    const rehearsalDownloadMatch =
+      normalizedCommand.match(/^rehearsal\s+download\s+(\d{1,2})$/);
+
+    if (rehearsalDownloadMatch) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+
+      input.value = "";
+      appendOutput(`> ${rawCommand}`, "command-echo");
+
+      const id = rehearsalDownloadMatch[1].padStart(2, "0");
+
+      downloadRehearsalTrack(id);
+
+      return;
+    }
+
+
+    /* ----------------------------------------------------------
+       REGULAR ALBUM PLAY
+    ---------------------------------------------------------- */
+
     const match = normalizedCommand.match(/^play\s+(\d{1,2})$/);
 
     if (!match) return;
@@ -335,6 +700,7 @@ form.addEventListener(
     appendOutput(`> ${rawCommand}`, "command-echo");
 
     const id = match[1].padStart(2, "0");
+
     playArchiveTrack(id);
   },
   true
