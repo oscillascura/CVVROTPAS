@@ -561,21 +561,93 @@ function listRehearsalPackages() {
       [
         "████████████████████████████████████████ 100%",
         "",
-        "ARCHIVE FRAGMENTS:",
+        "ARCHIVE FRAGMENTS DETECTED:",
         "",
         "A // TRANSMISSIONS 01–02",
         "B // TRANSMISSIONS 03–04",
         "C // TRANSMISSIONS 05–06",
         "",
-        "EXECUTE:",
-        "rehearsal download a",
-        "rehearsal download b",
-        "rehearsal download c"
+        "AUTOMATED RECOVERY SEQUENCE INITIATED..."
       ].join("\n")
     );
   }, 800);
+
+
+  /* DOWNLOAD ARCHIVE A */
+
+  window.setTimeout(() => {
+    appendOutput(
+      [
+        "RECOVERING ARCHIVE FRAGMENT A...",
+        "",
+        "A // TRANSMISSIONS 01–02"
+      ].join("\n")
+    );
+
+    triggerRehearsalPackageDownload("a");
+  }, 1600);
+
+
+  /* DOWNLOAD ARCHIVE B */
+
+  window.setTimeout(() => {
+    appendOutput(
+      [
+        "RECOVERING ARCHIVE FRAGMENT B...",
+        "",
+        "B // TRANSMISSIONS 03–04"
+      ].join("\n")
+    );
+
+    triggerRehearsalPackageDownload("b");
+  }, 3000);
+
+
+  /* DOWNLOAD ARCHIVE C */
+
+  window.setTimeout(() => {
+    appendOutput(
+      [
+        "RECOVERING ARCHIVE FRAGMENT C...",
+        "",
+        "C // TRANSMISSIONS 05–06"
+      ].join("\n")
+    );
+
+    triggerRehearsalPackageDownload("c");
+  }, 4400);
+
+
+  /* COMPLETE */
+
+  window.setTimeout(() => {
+    appendOutput(
+      [
+        "████████████████████████████████████████ 100%",
+        "",
+        "ARCHIVE RECOVERY COMPLETE.",
+        "",
+        "03 DATA FRAGMENTS TRANSMITTED.",
+        "06 REHEARSAL RECORDS RECOVERED."
+      ].join("\n")
+    );
+  }, 5200);
 }
 
+function triggerRehearsalPackageDownload(fragmentId) {
+  const fragment = rehearsalPackages[fragmentId];
+
+  if (!fragment) return;
+
+  const link = document.createElement("a");
+
+  link.href = fragment.file;
+  link.download = fragment.file.split("/").pop();
+
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
 
 /* ==============================================================
    DOWNLOAD REHEARSAL ARCHIVE FRAGMENT
