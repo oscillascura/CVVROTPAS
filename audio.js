@@ -572,9 +572,6 @@ function listRehearsalPackages() {
     );
   }, 800);
 
-
-  /* DOWNLOAD ARCHIVE A */
-
   window.setTimeout(() => {
     appendOutput(
       [
@@ -586,9 +583,6 @@ function listRehearsalPackages() {
 
     triggerRehearsalPackageDownload("a");
   }, 1600);
-
-
-  /* DOWNLOAD ARCHIVE B */
 
   window.setTimeout(() => {
     appendOutput(
@@ -602,9 +596,6 @@ function listRehearsalPackages() {
     triggerRehearsalPackageDownload("b");
   }, 3000);
 
-
-  /* DOWNLOAD ARCHIVE C */
-
   window.setTimeout(() => {
     appendOutput(
       [
@@ -616,9 +607,6 @@ function listRehearsalPackages() {
 
     triggerRehearsalPackageDownload("c");
   }, 4400);
-
-
-  /* COMPLETE */
 
   window.setTimeout(() => {
     appendOutput(
