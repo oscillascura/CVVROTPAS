@@ -1,7 +1,8 @@
 const externalLinks = {
   bandcamp: "https://YOUR-BANDCAMP-URL-HERE",
   spotify: "https://YOUR-SPOTIFY-URL-HERE",
-  instagram: "https://YOUR-INSTAGRAM-URL-HERE"
+  instagram: "https://YOUR-INSTAGRAM-URL-HERE",
+  vinylhex: "https://vinylhexrecords.bigcartel.com/"
 };
 
 const bootText = document.querySelector("#bootText");
@@ -86,6 +87,7 @@ const commands = {
     "help           display command list",
     "archive        open the eight-part ascent sequence",
     "rituals        display album sequence",
+    "vinylhex       access physical distribution node",
     "bandcamp       open Oscillascura on Bandcamp",
     "spotify        open Oscillascura on Spotify",
     "instagram      open Oscillascura on Instagram",
@@ -135,6 +137,29 @@ const commands = {
     return "OPENING BANDCAMP NODE...";
   },
 
+vinylhex: () => {
+  openExternalNode("vinylhex");
+
+  return [
+    "EXTERNAL DISTRIBUTION NODE DETECTED",
+    "",
+    "VINYL HEX RECORDS",
+    "NODE LOCATION.............BUDAPEST // HUNGARY",
+    "CONNECTION STATUS.........AUTHORIZED",
+    "ARCHIVE RELATION..........PHYSICAL MEDIA DISTRIBUTION",
+    "",
+    "HEX 003 // OSCILLASCURA",
+    "COSMIC VVAMPIRIC RITES OF THE",
+    "POST-HUMANIAN ASCENT SEQUENCE",
+    "",
+    "PHYSICAL TRANSMISSIONS:",
+    "CASSETTE // ENERGY VAMPIRE",
+    "CASSETTE // PLASMA RIVER",
+    "",
+    "OPENING VINYL HEX RECORDS NODE..."
+  ].join("\n");
+},
+  
   spotify: () => {
     openExternalNode("spotify");
     return "OPENING SPOTIFY NODE...";
